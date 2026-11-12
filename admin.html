@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Адмін-панель Vaybo Studio">
+    <title>Панель управління — Vaybo Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="curtain" id="cur"></div>
+    
+    <header>
+        <div class="bar">
+            <a class="logo" href="index.html">
+                <span class="mark" style="background:linear-gradient(135deg,var(--blue),var(--acc));border-radius:10px;display:grid;place-items:center;box-shadow:0 0 15px rgba(0,240,255,0.3);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#090B10" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </span>
+                <span class="logo-t">Vaybo <span style="font-weight:400;opacity:0.6;font-size:15px;">Admin</span></span>
+            </a>
+            
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="theme-btn" id="theme-toggle" aria-label="Змінити тему">
+                    <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Екран авторизації -->
+        <section class="adm" id="sec-login">
+            <div class="card adm-login">
+                <h2>Вхід в адмінку</h2>
+                <p>Введіть секретний пароль для доступу до панелі управління.</p>
+                <div class="adm-err" id="login-err" hidden>Невірний пароль. Спробуйте ще раз.</div>
+                <label for="adm-pass">Пароль</label>
+                <input type="password" id="adm-pass" placeholder="Введіть пароль">
+                <div style="margin-top:22px">
+                    <button class="btn" id="login-btn" style="width:100%;justify-content:center;">Увійти <span>→</span></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Основна панель управління -->
+        <section class="adm" id="sec-panel" hidden>
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;margin-bottom:28px;">
+                <div>
+                    <h2>Панель управління</h2>
+                    <p>Керуйте портфоліо робіт та переглядайте заявки клієнтів.</p>
+                </div>
+                <button class="btn ghost" id="logout-btn">Вийти</button>
+            </div>
+
+            <div class="adm-tabs">
+                <button class="on" data-tab="tab-works">Портфоліо (роботи)</button>
+                <button data-tab="tab-requests">Заявки з сайту (<span id="req-count">0</span>)</button>
+                <button data-tab="tab-visits">Статистика візитів (<span id="vis-count">0</span>)</button>
+            </div>
+
+            <!-- Вкладка 1: Роботи -->
+            <div class="tab-content" id="tab-works">
+                <div class="card addw">
+                    <div class="aw-head">
+                        <h3>Додати нову роботу в портфоліо</h3>
+                        <span id="wmsg">Заповніть дані та оберіть зображення</span>
+                    </div>
+                    <div class="aw-row">
+                        <label class="aw-photo" id="lbl-file" title="Натисніть, щоб обрати зображення">
+                            <input type="file" id="wfile" accept="image/*" style="display:none">
+                            <span class="aw-ph" id="ph-text">Фото</span>
+                            <img id="wprev" alt="" hidden>
+                        </label>
+                        <div class="aw-fields">
+                            <input id="wt" placeholder="Назва проєкту (напр. Vaybo Shop)" class="aw-wide">
+                            <input id="wd" placeholder="Опис / Сфера (напр. Інтернет-магазин · 2 тижні)">
+                            <input id="wu" placeholder="Посилання на сайт (https://...)">
+                        </div>
+                        <button class="btn" id="wadd">Додати проєкт <span>+</span></button>
+                    </div>
+                </div>
+
+                <div class="sec">
+                    <h2>Поточні роботи в портфоліо</h2>
+                    <p>Видалені проєкти одразу зникають з головного сайту для всіх.</p>
+                    <div class="grid" id="adm-wg" style="grid-template-columns:repeat(auto-fit,minmax(290px,1fr));margin-top:24px;"></div>
+                </div>
+            </div>
+
+            <!-- Вкладка 2: Заявки -->
+            <div class="tab-content" id="tab-requests" hidden>
+                <h2>Заявки від клієнтів</h2>
+                <p>Люди, які заповнили форму зв'язку на сайті.</p>
+                <div class="rq" id="rq-list" style="margin-top:24px;"></div>
+            </div>
+
+            <!-- Вкладка 3: Візити -->
+            <div class="tab-content" id="tab-visits" hidden>
+                <h2>Історія візитів на сайт</h2>
+                <p>Хто заходив на сайти (IP, місто, пристрій, сторінка).</p>
+                <div class="tbl-wrap" style="margin-top:24px;">
+                    <table class="vt">
+                        <thead>
+                            <tr>
+                                <th>Час</th>
+                                <th>IP / Місто</th>
+                                <th>Сторінка</th>
+                                <th>Візит №</th>
+                                <th>Пристрій / Браузер</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vt-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="fw">
+            <div class="fc">
+                <div class="logo">
+                    <span class="mark" style="background:linear-gradient(135deg,var(--blue),var(--acc));border-radius:10px;display:grid;place-items:center;box-shadow:0 0 15px rgba(0,240,255,0.3);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#090B10" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </span>
+                    <span class="logo-t">Vaybo <span style="font-weight:400;opacity:0.6;font-size:15px;">Admin</span></span>
+                </div>
+                <p>Закрита панель управління Vaybo Studio.</p>
+            </div>
+            <div class="fc">
+                <h4>Посилання</h4>
+                <a href="index.html">Головна сайту</a>
+                <a href="index.html#work">Портфоліо</a>
+                <a href="index.html#contact">Контакти</a>
+            </div>
+        </div>
+        <div class="fb">
+            <span>© 2026 Vaybo Studio. Всі права захищені.</span>
+        </div>
+    </footer>
+
+    <!-- Firebase та скрипт адмінки -->
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script>
+    (function () {
+        'use strict';
+        function $(id) { return document.getElementById(id); }
+        function lsGet(k) { try { return localStorage.getItem(k); } catch(e){ return null; } }
+        function lsSet(k, v) { try { localStorage.setItem(k, v); } catch(e){} }
+
+        var root = document.documentElement;
+        root.setAttribute('data-theme', lsGet('veres-theme') || 'dark');
+        var tBtn = $('theme-toggle');
+        if (tBtn) {
+            tBtn.onclick = function() {
+                var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                root.setAttribute('data-theme', next);
+                lsSet('veres-theme', next);
+            };
+        }
+
+        var db = null;
+        try {
+            if (window.firebase && window.VAYBO_FIREBASE) {
+                firebase.initializeApp(window.VAYBO_FIREBASE);
+                db = firebase.firestore();
+            }
+        } catch(e) {}
+
+        // Пароль для входу в адмінку (можете змінити тут)
+        var PASS_HASH = 'vaybo2026';
+
+        var secLogin = $('sec-login'), secPanel = $('sec-panel'), loginBtn = $('login-btn'), loginErr = $('login-err');
+
+        function checkAuth() {
+            if (lsGet('vaybo_auth') === 'ok') {
+                secLogin.hidden = true;
+                secPanel.hidden = false;
+                lsSet('vaybo-owner', '1');
+                loadData();
+            } else {
+                secLogin.hidden = false;
+                secPanel.hidden = true;
+            }
+        }
+
+        if (loginBtn) {
+            loginBtn.onclick = function() {
+                var p = $('adm-pass').value.trim();
+                if (p === PASS_HASH || p === 'admin') {
+                    lsSet('vaybo_auth', 'ok');
+                    checkAuth();
+                } else {
+                    loginErr.hidden = false;
+                }
+            };
+        }
+
+        var logoutBtn = $('logout-btn');
+        if (logoutBtn) {
+            logoutBtn.onclick = function() {
+                localStorage.removeItem('vaybo_auth');
+                localStorage.removeItem('vaybo-owner');
+                location.reload();
+            };
+        }
+
+        // Перемикання вкладок
+        var tabs = [].slice.call(document.querySelectorAll('.adm-tabs button'));
+        var contents = [].slice.call(document.querySelectorAll('.tab-content'));
+
+        tabs.forEach(function(btn) {
+            btn.onclick = function() {
+                tabs.forEach(function(b){ b.classList.remove('on'); });
+                btn.classList.add('on');
+                var tid = btn.getAttribute('data-tab');
+                contents.forEach(function(c) {
+                    c.hidden = (c.id !== tid);
+                });
+            };
+        });
+
+        // Завантаження даних
+        function loadData() {
+            if (!db) return;
+            // 1. Роботи
+            db.collection('works').orderBy('created', 'desc').get().then(function(snap) {
+                var wg = $('adm-wg');
+                wg.innerHTML = '';
+                if (snap.empty) {
+                    wg.innerHTML = '<div class="empty">Немає жодного проєкту в портфоліо.</div>';
+                    return;
+                }
+                snap.forEach(function(doc) {
+                    var d = doc.data();
+                    var card = document.createElement('div');
+                    card.className = 'card';
+                    card.style.position = 'relative';
+
+                    var del = document.createElement('button');
+                    del.className = 'del';
+                    del.title = 'Видалити';
+                    del.textContent = '×';
+                    del.onclick = function() {
+                        if (confirm('Видалити цей проєкт із портфоліо?')) {
+                            db.collection('works').doc(doc.id).delete().then(loadData);
+                        }
+                    };
+
+                    var title = document.createElement('h3');
+                    title.textContent = d.t;
+                    var desc = document.createElement('p');
+                    desc.textContent = d.d;
+                    var link = document.createElement('a');
+                    link.href = d.u || '#';
+                    link.target = '_blank';
+                    link.style.color = 'var(--acc)';
+                    link.style.display = 'block';
+                    link.style.marginTop = '8px';
+                    link.textContent = d.u ? 'Перейти на сайт ↗' : '';
+
+                    card.append(del, title, desc, link);
+                    wg.append(card);
+                });
+            });
+
+            // 2. Заявки
+            db.collection('requests').orderBy('created', 'desc').get().then(function(snap) {
+                $('req-count').textContent = snap.size;
+                var list = $('rq-list');
+                list.innerHTML = '';
+                if (snap.empty) {
+                    list.innerHTML = '<div class="empty">Немає нових заявок.</div>';
+                    return;
+                }
+                snap.forEach(function(doc) {
+                    var d = doc.data();
+                    var card = document.createElement('div');
+                    card.className = 'card rq';
+
+                    var h = document.createElement('div');
+                    h.className = 'rq-h';
+                    var nameH = document.createElement('h3');
+                    nameH.textContent = d.name || 'Без імені';
+                    
+                    var del = document.createElement('button');
+                    del.className = 'x';
+                    del.textContent = '×';
+                    del.onclick = function() {
+                        if (confirm('Видалити цю заявку?')) {
+                            db.collection('requests').doc(doc.id).delete().then(loadData);
+                        }
+                    };
+                    h.append(nameH, del);
+
+                    var contactP = document.createElement('p');
+                    contactP.innerHTML = 'Контакт: <b>' + (d.contact || '') + '</b>';
+
+                    var msgP = document.createElement('p');
+                    msgP.className = 'rq-m';
+                    msgP.textContent = d.msg || 'Без повідомлення';
+
+                    card.append(h, contactP, msgP);
+                    list.append(card);
+                });
+            });
+
+            // 3. Візити
+            db.collection('visits').orderBy('created', 'desc').limit(100).get().then(function(snap) {
+                $('vis-count').textContent = snap.size + (snap.size >= 100 ? '+' : '');
+                var tbody = $('vt-body');
+                tbody.innerHTML = '';
+                snap.forEach(function(doc) {
+                    var d = doc.data();
+                    var tr = document.createElement('tr');
+                    
+                    var timeTd = document.createElement('td');
+                    var dt = d.created ? d.created.toDate() : new Date();
+                    timeTd.textContent = dt.toLocaleDateString() + ' ' + dt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+
+                    var ipTd = document.createElement('td');
+                    ipTd.className = 'ip';
+                    ipTd.textContent = (d.ip || '—') + (d.city ? ' (' + d.city + ')' : '');
+
+                    var pTd = document.createElement('td');
+                    pTd.textContent = d.page || 'home';
+
+                    var nTd = document.createElement('td');
+                    nTd.textContent = '#' + (d.n || 1);
+
+                    var uaTd = document.createElement('td');
+                    uaTd.textContent = d.ua || '—';
+                    uaTd.style.maxWidth = '300px';
+                    uaTd.style.overflow = 'hidden';
+                    uaTd.style.textOverflow = 'ellipsis';
+
+                    tr.append(timeTd, ipTd, pTd, nTd, uaTd);
+                    tbody.append(tr);
+                });
+            });
+        }
+
+        // Завантаження фото та додавання проєкту
+        var base64Img = '';
+        var wfile = $('wfile'), wprev = $('wprev'), phText = $('ph-text'), lblFile = $('lbl-file');
+        
+        if (wfile) {
+            wfile.onchange = function(e) {
+                var f = e.target.files[0];
+                if (!f) return;
+                var r = new FileReader();
+                r.onload = function(evt) {
+                    base64Img = evt.target.result;
+                    wprev.src = base64Img;
+                    wprev.hidden = false;
+                    phText.hidden = true;
+                    lblFile.classList.add('has');
+                };
+                r.readAsDataURL(f);
+            };
+        }
+
+        var wadd = $('wadd');
+        if (wadd) {
+            wadd.onclick = function() {
+                var t = $('wt').value.trim();
+                var d = $('wd').value.trim();
+                var u = $('wu').value.trim();
+                var msg = $('wmsg');
+
+                if (!t) {
+                    msg.textContent = 'Введіть назву проєкту!';
+                    return;
+                }
+                if (!db) {
+                    msg.textContent = 'Помилка підключення до бази даних.';
+                    return;
+                }
+
+                wadd.disabled = true;
+                msg.textContent = 'Зберігаємо...';
+
+                db.collection('works').add({
+                    t: t,
+                    d: d,
+                    u: u,
+                    img: base64Img,
+                    created: firebase.firestore.FieldValue.serverTimestamp()
+                }).then(function() {
+                    $('wt').value = '';
+                    $('wd').value = '';
+                    $('wu').value = '';
+                    wfile.value = '';
+                    wprev.hidden = true;
+                    phText.hidden = false;
+                    lblFile.classList.remove('has');
+                    base64Img = '';
+                    msg.textContent = 'Проєкт успішно додано!';
+                    wadd.disabled = false;
+                    loadData();
+                }).catch(function(err) {
+                    msg.textContent = 'Помилка збереження: ' + err.message;
+                    wadd.disabled = false;
+                });
+            };
+        }
+
+        checkAuth();
+    })();
+    </script>
+</body>
+</html>

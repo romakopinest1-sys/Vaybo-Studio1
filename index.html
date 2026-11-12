@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="description" content="Vaybo Studio — молода студія, яка проєктує, малює і розробляє сайти для малого бізнесу.">
+    <title>Vaybo Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="curtain" id="cur"></div>
+    
+    <header>
+        <div class="bar">
+            <a class="logo" href="#home">
+                <span class="mark" style="background:linear-gradient(135deg,var(--blue),var(--acc));border-radius:10px;display:grid;place-items:center;box-shadow:0 0 15px rgba(0,240,255,0.3);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#090B10" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </span>
+                <span class="logo-t">Vaybo <span style="font-weight:400;opacity:0.6;font-size:15px;">Studio</span></span>
+            </a>
+            
+            <div style="display:flex;align-items:center;gap:12px;">
+                <button class="theme-btn" id="theme-toggle" aria-label="Змінити тему">
+                    <svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    <svg class="moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </button>
+                <button class="burger" id="bg" aria-label="Меню">☰</button>
+            </div>
+
+            <nav id="nav">
+                <a href="#home">Головна</a>
+                <a href="#services">Послуги</a>
+                <a href="#work">Роботи</a>
+                <a href="#about">Про нас</a>
+                <a href="#prices">Ціни</a>
+                <a href="#contact">Контакти</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page" id="home">
+            <div class="hero">
+                <div>
+                    <h1 id="h1">Сайти, які приємно відкривати і легко купувати</h1>
+                    <p>Vaybo Studio — молода студія, яка проєктує, малює і розробляє сайти для малого бізнесу. Ми тільки починаємо, тому кожному проєкту приділяємо максимум уваги: від першої ідеї до запуску.</p>
+                    <div class="row">
+                        <a class="btn" href="#contact">Обговорити проєкт <span>→</span></a>
+                        <a class="btn ghost" href="#work">Дивитися роботи</a>
+                    </div>
+                </div>
+                <div class="mock" style="overflow:hidden;background:var(--surf);border-radius:20px;border:1px solid var(--line);padding:14px;">
+                    <div style="display:flex;gap:6px;margin-bottom:12px;">
+                        <i style="background:#ff5f56;width:10px;height:10px;border-radius:50%;display:inline-block;"></i>
+                        <i style="background:#ffbd2e;width:10px;height:10px;border-radius:50%;display:inline-block;"></i>
+                        <i style="background:#27c93f;width:10px;height:10px;border-radius:50%;display:inline-block;"></i>
+                    </div>
+                    <div style="border-radius:12px;overflow:hidden;aspect-ratio:16/10;width:100%;">
+                        <img src="images/про нас.webp" alt="Vaybo Studio" style="width:100%;height:100%;object-fit:cover;display:block;">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="strip">
+                <div><b data-n="24" data-s=" год">0</b>відповідаємо на вашу заявку</div>
+                <div><b data-n="2" data-s=" тижні">0</b>мінімальний термін до запуску</div>
+                <div><b data-n="30" data-s=" днів">0</b>безкоштовних правок після запуску</div>
+            </div>
+
+            <div class="mq">
+                <div class="mqt" id="mqt">
+                    <span>Лендінги</span><span>Інтернет-магазини</span><span>Дизайн</span><span>SEO</span><span>Веб-застосунки</span><span>Підтримка</span>
+                </div>
+            </div>
+
+            <div class="feat">
+                <div><h2>Спершу сенс, потім краса</h2><p>Починаємо з того, що має зрозуміти й зробити відвідувач, і лише тоді малюємо.</p></div>
+                <div><h2>Рух має причину</h2><p>Анімації підказують, що натискати і що змінилось, а не відволікають.</p></div>
+                <div><h2>Ви бачите процес</h2><p>Щотижня надсилаємо показ робіт, тож сюрпризів на запуску не буде.</p></div>
+            </div>
+
+            <div class="sec" id="hw" hidden>
+                <h2>Свіжі роботи</h2>
+                <p>Наші найновіші проєкти.</p>
+                <div class="grid" id="hg" style="grid-template-columns:repeat(auto-fit,minmax(290px,1fr))"></div>
+            </div>
+
+            <div class="sec">
+                <h2>Оберіть формат співпраці</h2>
+                <p>Тільки сайт, тільки дизайн у Figma або все разом. Детальніше про вартість і терміни на сторінці цін.</p>
+                <div class="grid">
+                    <a class="card" href="#prices"><h3>Сайт</h3><p>Розробка за готовим макетом.</p><p class="mini">від 27 000 ₴ · 3–4 тижні</p></a>
+                    <a class="card" href="#prices"><h3>Дизайн у Figma</h3><p>Макети сайту без розробки.</p><p class="mini">від 13 500 ₴ · 1–2 тижні</p></a>
+                    <a class="card" href="#prices"><h3>Дизайн + сайт 2 в 1</h3><p>Усе в одній команді, вигідніше.</p><p class="mini">від 38 000 ₴ · 5–8 тижнів</p></a>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Чому нам можна довірити проєкт</h2>
+                <div class="grid">
+                    <div class="card"><h3>Особиста увага</h3><p>Ви спілкуєтесь безпосередньо з тими, хто робить ваш сайт, без посередників і черг.</p></div>
+                    <div class="card"><h3>Чесні умови</h3><p>Вартість і терміни називаємо на старті й не додаємо прихованих доплат.</p></div>
+                    <div class="card"><h3>Ми тільки починаємо</h3><p>Тому кожен проєкт для нас важливий: ми будуємо репутацію з нуля й дорожимо кожним клієнтом.</p></div>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Із чим допомагаємо</h2>
+                <div class="chips">
+                    <span class="chip">Сайти-візитки</span><span class="chip">Лендінги</span><span class="chip">Інтернет-магазини</span><span class="chip">Дизайн у Figma</span><span class="chip">Адаптив під телефони</span><span class="chip">SEO-основа</span>
+                </div>
+            </div>
+
+            <div class="cta">
+                <div><h2 style="margin-bottom:8px">Є ідея сайту?</h2><p>Розкажіть у двох реченнях, ми запропонуємо план і терміни.</p></div>
+                <a class="btn" href="#contact">Написати нам <span>→</span></a>
+            </div>
+        </section>
+
+        <section class="page" id="services">
+            <h2>Що ми робимо</h2>
+            <p>Беремо весь шлях на себе: від структури сторінок до налаштування після запуску.</p>
+            <div class="grid">
+                <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3"/></svg></div><h3>Сайти-візитки та лендінги</h3><p>Швидкі сторінки, що чітко пояснюють, чим ви корисні, і ведуть до заявки.</p></div>
+                <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 7h15l-1.5 9h-12zM6 7 5 3H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg></div><h3>Інтернет-магазини</h3><p>Каталог, кошик, оплата й доставка. Зручно покупцям і вам в адмінці.</p></div>
+                <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.5 7.1 18.2l.9-5.5-4-3.9 5.5-.8z"/></svg></div><h3>Дизайн і айдентика</h3><p>Логотип, кольори, шрифти та макети в Figma, які легко підтримувати.</p></div>
+                <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 17l5-5 4 4 7-8M15 8h5v5"/></svg></div><h3>SEO та реклама</h3><p>Налаштовуємо аналітику, швидкість і пошукову видимість. Допомагаємо з рекламою.</p></div>
+                <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></div><h3>Веб-застосунки</h3><p>Кабінети, бронювання, калькулятори — все, що не вміє типовий конструктор.</p></div>
+                <div class="card"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div><h3>Підтримка</h3><p>Оновлення, резервні копії та правки щомісяця. Ви завжди знаєте, кому писати.</p></div>
+            </div>
+
+            <div class="steps">
+                <h2 style="margin-top:48px">Як проходить робота</h2>
+                <div class="step"><b>1</b><div><h3>Знайомство</h3><p>Розбираємо цілі, аудиторію та приклади сайтів, які вам подобаються.</p></div></div>
+                <div class="step"><b>2</b><div><h3>Дизайн</h3><p>Показуємо макети головної та ключових сторінок, правимо разом.</p></div></div>
+                <div class="step"><b>3</b><div><h3>Розробка</h3><p>Верстаємо, підключаємо форми, оплату та аналітику.</p></div></div>
+                <div class="step"><b>4</b><div><h3>Запуск</h3><p>Перевіряємо на телефонах, публікуємо й навчаємо вашу команду.</p></div></div>
+            </div>
+
+            <div class="sec">
+                <h2>Що ви отримуєте</h2>
+                <div class="feat">
+                    <div><h2>Усі файли й доступи</h2><p>Вихідні макети, код і доступи до хостингу передаємо вам.</p></div>
+                    <div><h2>Навчання команди</h2><p>Показуємо, як оновлювати тексти, товари й фото самостійно.</p></div>
+                    <div><h2>30 днів правок</h2><p>Після запуску безкоштовно виправляємо все, що знайдемо разом.</p></div>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Наші стандарти якості</h2>
+                <div class="strip" style="margin-top:24px">
+                    <div><b data-n="60" data-s=" днів">0</b>підтримки в пакеті «2 в 1»</div>
+                    <div><b data-n="5" data-s=" сек">0</b>ціль із завантаження сторінки</div>
+                    <div><b data-n="100" data-s="%">0</b>адаптив під телефони</div>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Інструменти, якими працюємо</h2>
+                <div class="chips">
+                    <span class="chip">Figma</span><span class="chip">HTML і CSS</span><span class="chip">JavaScript</span><span class="chip">React</span><span class="chip">WordPress</span><span class="chip">Shopify</span><span class="chip">Node.js</span><span class="chip">Google Analytics</span><span class="chip">LiqPay</span>
+                </div>
+            </div>
+
+            <div class="cta">
+                <div><h2 style="margin-bottom:8px">Не знаєте, що саме потрібно?</h2><p>Опишіть задачу, а ми підберемо формат і назвемо терміни.</p></div>
+                <a class="btn" href="#contact">Написати нам <span>→</span></a>
+            </div>
+        </section>
+
+        <section class="page" id="work">
+            <h2>Наші роботи</h2>
+            <p>Студія молода, тому портфоліо поповнюється з кожним новим сайтом.</p>
+            <div class="grid" id="wg" style="grid-template-columns:repeat(auto-fit,minmax(290px,1fr))"></div>
+
+            <div class="sec">
+                <h2>Для яких сфер робимо сайти</h2>
+                <div class="chips">
+                    <span class="chip">Готелі й туризм</span><span class="chip">Роздрібна торгівля</span><span class="chip">Медицина</span><span class="chip">Архітектура</span><span class="chip">Спорт і фітнес</span><span class="chip">Виробництво</span><span class="chip">Освіта</span>
+                </div>
+            </div>
+
+            <div class="cta">
+                <div><h2 style="margin-bottom:8px">Хочете сайт для свого бізнесу?</h2><p>Розкажіть про задачу, і ми запропонуємо рішення.</p></div>
+                <a class="btn" href="#contact">Написати нам <span>→</span></a>
+            </div>
+        </section>
+
+        <section class="page" id="about">
+            <h2>Про нас</h2>
+            <div class="split">
+                <img src="images/про нас.webp" alt="Vaybo Studio" style="width:100%;height:100%;object-fit:cover;border-radius:20px;display:block;">
+                <div>
+                    <p>Vaybo Studio — молода студія, яка тільки починає свій шлях. Нам набридли сайти, що красиві на картинці й незручні в житті, тому ми робимо інакше: спершу розбираємось у задачі, а потім малюємо й розробляємо.</p>
+                    <p style="margin-top:14px">Ми працюємо відкрито: ви бачите прогрес щотижня, а після запуску лишаєтесь на зв’язку з тими самими людьми.</p>
+                    <div class="row" style="margin-top:26px"><a class="btn" href="#contact">Познайомитись <span>→</span></a></div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="card"><h3>Чесні терміни</h3><p>Називаємо дату на старті й дотримуємось її.</p></div>
+                <div class="card"><h3>Зрозуміла мова</h3><p>Без жаргону: пояснюємо, що робимо і навіщо.</p></div>
+                <div class="card"><h3>Турбота про деталі</h3><p>Перевіряємо кожну кнопку, анімацію й текст.</p></div>
+            </div>
+
+            <div class="sec">
+                <h2>Ми тільки на початку — і це плюс</h2>
+                <div class="feat">
+                    <div><h2>Більше уваги</h2><p>Ваш проєкт для нас не один зі ста, а один із перших, тому робимо його на совість.</p></div>
+                    <div><h2>Гнучкість</h2><p>Швидко домовляємось і вносимо правки без бюрократії та довгих погоджень.</p></div>
+                    <div><h2>Відповідальність</h2><p>Репутацію будуємо з нуля, тож дорожимо кожним словом і кожним терміном.</p></div>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Наш шлях</h2>
+                <div class="tl">
+                    <div><b>2026</b><p>Запускаємо Vaybo Studio й беремо перші проєкти.</p></div>
+                    <div><b>Далі</b><p>Наповнюємо портфоліо та збираємо відгуки перших клієнтів.</p></div>
+                    <div><b>Мета</b><p>Стати студією, яку радять знайомим.</p></div>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Наша команда</h2>
+                <p>Люди, які створюють сайти з турботою про ваш бізнес.</p>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Роман Павлович</h3>
+                        <p>Засновник і керівник веб-студії, розробка та технічна частина проєкту.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Іван Михайлович</h3>
+                        <p>Директор веб-студії, проєктування інтерфейсів, UX/UI та анімації в Figma.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta">
+                <div><h2 style="margin-bottom:8px">Станьте одним із перших клієнтів</h2><p>Розкажіть про задачу, і ми приділимо вашому проєкту максимум уваги.</p></div>
+                <a class="btn" href="#contact">Написати нам <span>→</span></a>
+            </div>
+        </section>
+
+        <section class="page" id="prices">
+            <h2>Ціни та пакети</h2>
+            <p>Три формати роботи: тільки сайт, тільки дизайн у Figma або все разом. Обирайте те, що потрібно саме вам.</p>
+
+            <div class="pk-grid">
+                <div class="card pk">
+                    <div class="ic"><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M14 5l-4 14"/></svg></div>
+                    <h3>Сайт</h3>
+                    <p class="tag">Розробка за готовим макетом. Для тих, у кого вже є дизайн.</p>
+                    <div class="pr">від 27 000 ₴ <small></small></div>
+                    <span class="term"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Орієнтовно 3–4 тижні</span>
+                    <ul><li>Верстка за макетом без відхилень</li><li>Адаптив: телефон, планшет, комп’ютер</li><li>Форми заявок на пошту або в Telegram</li><li>Базове SEO та швидке завантаження</li><li>Домен і хостинг під ключ</li><li>30 днів безкоштовних правок</li></ul>
+                    <p class="no">Не входить: дизайн, макети та тексти.</p>
+                    <a class="btn ghost" href="#contact" data-pack="Сайт">Замовити <span>→</span></a>
+                </div>
+                <div class="card pk">
+                    <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+                    <h3>Дизайн у Figma</h3>
+                    <p class="tag">Тільки макети сайту. Розробку зробите самі або в нашої команди.</p>
+                    <div class="pr">від 13 500 ₴ <small></small></div>
+                    <span class="term"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Орієнтовно 1–2 тижні</span>
+                    <ul><li>Структура сторінок і прототип</li><li>Дизайн 5–7 екранів: комп’ютер і телефон</li><li>Кольори, шрифти, кнопки, стилі</li><li>Опис анімацій і взаємодій</li><li>Вихідні файли Figma</li><li>2 раунди правок</li></ul>
+                    <p class="no">Не входить: верстка, розробка, хостинг.</p>
+                    <a class="btn ghost" href="#contact" data-pack="Дизайн у Figma">Замовити <span>→</span></a>
+                </div>
+                <div class="card pk best"><span class="badge">Найвигідніше</span>
+                    <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 2 8l10 5 10-5zM2 13l10 5 10-5M2 17.5l10 5 10-5"/></svg></div>
+                    <h3>Дизайн + сайт 2 в 1</h3>
+                    <p class="tag">Усе в одній команді: від ідеї й макетів до запущеного сайту.</p>
+                    <div class="pr">від 38 000 ₴ <small></small></div>
+                    <div class="save">Економія близько 2 500 ₴ і до 3 тижнів</div>
+                    <span class="term"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Орієнтовно 5–8 тижнів</span>
+                    <ul><li>Усе з пакетів «Сайт» і «Дизайн у Figma»</li><li>Повні анімації та переходи</li><li>SEO-основа й підключена аналітика</li><li>3 раунди правок на кожному етапі</li><li>Навчання: як самому змінювати сайт</li><li>60 днів підтримки після запуску</li></ul>
+                    <p class="no">Швидше й дешевше, ніж замовляти окремо.</p>
+                    <a class="btn" href="#contact" data-pack="Дизайн + сайт 2 в 1">Замовити <span>→</span></a>
+                </div>
+            </div>
+            <p class="note">Усі ціни й терміни орієнтовні. Точну вартість назвемо після короткого брифу, зазвичай за один день.</p>
+
+            <div class="sec">
+                <h2>Порівняння пакетів</h2>
+                <div class="tbl-wrap">
+                    <table class="cmp">
+                        <thead><tr><th>Що входить</th><th>Сайт</th><th>Дизайн у Figma</th><th class="hl">Дизайн + сайт</th></tr></thead>
+                        <tbody>
+                            <tr><td>Дизайн у Figma</td><td><span class="n">—</span></td><td><span class="y">✓</span></td><td class="hl"><span class="y">✓</span></td></tr>
+                            <tr><td>Верстка та розробка</td><td><span class="y">✓</span></td><td><span class="n">—</span></td><td class="hl"><span class="y">✓</span></td></tr>
+                            <tr><td>Адаптив під телефон</td><td><span class="y">✓</span></td><td>Макети</td><td class="hl"><span class="y">✓</span></td></tr>
+                            <tr><td>Анімації та взаємодії</td><td>За макетом</td><td>Описані в макеті</td><td class="hl">Розроблені повністю</td></tr>
+                            <tr><td>Форми заявок</td><td><span class="y">✓</span></td><td><span class="n">—</span></td><td class="hl"><span class="y">✓</span></td></tr>
+                            <tr><td>SEO-основа й аналітика</td><td>Базове</td><td><span class="n">—</span></td><td class="hl"><span class="y">✓</span></td></tr>
+                            <tr><td>Раундів правок</td><td>2</td><td>2</td><td class="hl">3</td></tr>
+                            <tr><td>Навчання команди</td><td><span class="n">—</span></td><td><span class="n">—</span></td><td class="hl"><span class="y">✓</span></td></tr>
+                            <tr><td>Підтримка після запуску</td><td>30 днів</td><td><span class="n">—</span></td><td class="hl">60 днів</td></tr>
+                            <tr><td>Орієнтовний термін</td><td>3–4 тижні</td><td>1–2 тижні</td><td class="hl">5–8 тижнів</td></tr>
+                            <tr><td>Орієнтовна ціна</td><td>від 27 000 ₴</td><td>від 13 500 ₴</td><td class="hl">від 38 000 ₴</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Скільки часу займає «2 в 1»</h2>
+                <div class="tl">
+                    <div><b>Тиждень 1</b><p>Знайомство, бриф, структура сторінок і прототип.</p></div>
+                    <div><b>Тиждень 2</b><p>Дизайн у Figma: показуємо екрани й правимо разом.</p></div>
+                    <div><b>Тижні 3–4</b><p>Верстка, анімації, форми та підключення аналітики.</p></div>
+                    <div><b>Тиждень 5</b><p>Тестування на телефонах, швидкість, SEO-основа.</p></div>
+                    <div><b>Тиждень 6</b><p>Запуск, навчання команди й початок підтримки.</p></div>
+                </div>
+                <p style="margin-top:18px">Простий лендінг можна зробити за 3 тижні, великий сайт чи магазин потребує більше часу.</p>
+            </div>
+
+            <h2 style="margin-top:56px">Часті питання</h2>
+            <details><summary>Скільки триває розробка?</summary><p>Лендінг займає 2–3 тижні, багатосторінковий сайт 4–6 тижнів, магазин від 8 тижнів.</p></details>
+            <details><summary>Чи можна буде самому змінювати тексти?</summary><p>Так. Ми підключаємо просту адмінку й проводимо коротке навчання для вашої команди.</p></details>
+            <details><summary>Як відбувається оплата?</summary><p>Половина на старті та половина після погодження готового сайту. Підтримка оплачується окремо щомісяця.</p></details>
+            <details><summary>Чи допомагаєте з хостингом і доменом?</summary><p>Так, підберемо й налаштуємо хостинг та домен, а також налаштуємо резервні копії.</p></details>
+
+            <div class="sec">
+                <h2>Додаткові послуги</h2>
+                <div class="grid">
+                    <div class="card price"><h3>Копірайтинг</h3><p>Тексти для сторінок, які пояснюють і продають.</p><div class="sum">від 4 500 ₴</div></div>
+                    <div class="card price"><h3>SEO-пакет</h3><p>Налаштування аналітики, швидкості та пошукової видимості.</p><div class="sum">від 8 300 ₴</div></div>
+                    <div class="card price"><h3>Підтримка</h3><p>Оновлення, резервні копії та правки щомісяця.</p><div class="sum">від 3 200 ₴/міс</div></div>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Від чого залежить ціна</h2>
+                <div class="feat">
+                    <div><h2>Кількість сторінок</h2><p>Чим більше сторінок і блоків, тим довше дизайн і верстка.</p></div>
+                    <div><h2>Складність дизайну</h2><p>Власні ілюстрації та анімації потребують більше часу.</p></div>
+                    <div><h2>Інтеграції</h2><p>Оплата, CRM і доставка додають роботи над логікою.</p></div>
+                </div>
+            </div>
+
+            <div class="cta">
+                <div><h2 style="margin-bottom:8px">Потрібен точний розрахунок?</h2><p>Надішліть задачу, і за добу ми назвемо вартість і терміни.</p></div>
+                <a class="btn" href="#contact">Написати нам <span>→</span></a>
+            </div>
+        </section>
+
+        <section class="page" id="contact">
+            <div class="split" style="align-items:start;margin-top:0">
+                <div>
+                    <h2>Розкажіть про ваш проєкт</h2>
+                    <p>Відповімо протягом робочого дня й запропонуємо час для короткого дзвінка.</p>
+                    <div style="margin-top:28px;padding-left:16px;border-left:2px solid var(--acc);display:grid;gap:10px;font-size:15px;color:var(--mut);">
+                        <div><span style="color:var(--acc);font-weight:700;">✓</span> <b style="color:var(--ink);">Безкоштовний розбір</b> вашої ідеї та оцінка вартості</div>
+                        <div><span style="color:var(--acc);font-weight:700;">✓</span> <b style="color:var(--ink);">Підкажемо рішення</b>, навіть якщо у вас є лише ідея</div>
+                        <div><span style="color:var(--acc);font-weight:700;">✓</span> <b style="color:var(--ink);">Назвемо бюджет</b> і точні терміни вже після розмови</div>
+                        <div><span style="color:var(--acc);font-weight:700;">✓</span> <b style="color:var(--ink);">Фіксовані умови</b> — точні терміни й ціна на старті</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <label for="n">Ім’я</label><input id="n" placeholder="Як до вас звертатись">
+                    <label for="e">Пошта або телефон</label><input id="e" placeholder="Куди відповісти">
+                    <label for="m">Про проєкт</label><textarea id="m" placeholder="Який вам сайт потрібно зробити і до якого терміну"></textarea>
+                    <div style="margin-top:22px"><button class="btn" id="send">Надіслати заявку <span>→</span></button></div>
+                    <div class="ok" id="ok"></div>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Як із нами зв’язатись</h2>
+                <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+                    <div class="card"><h3>Пошта</h3><p>romakopinest1@gmail.com</p></div>
+                    <div class="card"><h3>Телефон</h3><p>+380 68 228 30 44</p></div>
+                    <div class="card"><h3>Адреса</h3><p>Ужгород, вул. Університетська, 12</p></div>
+                    <div class="card"><h3>Години роботи</h3><p>Пн–Пт, 10:00–23:00</p></div>
+                </div>
+            </div>
+
+            <div class="sec">
+                <h2>Що буде після заявки</h2>
+                <div class="steps">
+                    <div class="step"><b>1</b><div><h3>Відповімо</h3><p>Протягом робочого дня напишемо й уточнимо деталі.</p></div></div>
+                    <div class="step"><b>2</b><div><h3>Передзвонимо</h3><p>Короткий дзвінок на 15 хвилин, щоб зрозуміти задачу.</p></div></div>
+                    <div class="step"><b>3</b><div><h3>Надішлемо пропозицію</h3><p>План, терміни й вартість за 1–2 дні.</p></div></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="fw">
+            <div class="fc">
+                <div class="logo">
+                    <span class="mark" style="background:linear-gradient(135deg,var(--blue),var(--acc));border-radius:10px;display:grid;place-items:center;box-shadow:0 0 15px rgba(0,240,255,0.3);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#090B10" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </span>
+                    <span class="logo-t">Vaybo <span style="font-weight:400;opacity:0.6;font-size:15px;">Studio</span></span>
+                </div>
+                <p>Веб-студія, що проєктує, малює й розробляє сайти для бізнесу. Працюємо відкрито й без жаргону.</p>
+            </div>
+            <div class="fc">
+                <h4>Сторінки</h4>
+                <a href="#home">Головна</a><a href="#services">Послуги</a><a href="#work">Роботи</a><a href="#about">Про нас</a><a href="#prices">Ціни</a><a href="#contact">Контакти</a>
+            </div>
+            <div class="fc">
+                <h4>Що робимо</h4>
+                <a href="#services">Лендінги</a><a href="#services">Інтернет-магазини</a><a href="#services">Дизайн і айдентика</a><a href="#services">SEO та реклама</a><a href="#services">Підтримка</a>
+            </div>
+            <div class="fc">
+                <h4>Контакти</h4>
+                <a href="mailto:romakopinest1@gmail.com">romakopinest1@gmail.com</a><a href="tel:+380682283044">+380 68 228 30 44</a><span class="fl">Ужгород, вул. Університетська, 12</span><span class="fl">Пн–Пт, 10:00–23:00</span>
+            </div>
+        </div>
+        <div class="fb">
+            <span>© 2026 Vaybo Studio. Створюємо сайти з турботою.</span>
+            <span class="footer-socials">
+                <a href="https://www.instagram.com/kvrms.x/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="https://t.me/vulkan_22" target="_blank" rel="noopener noreferrer" aria-label="Telegram" title="Telegram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-8.609 3.33c-2.068.8-4.133 1.598-5.724 2.21a405.15 405.15 0 0 1-2.849 1.09c-.42.147-.99.332-1.473.901-.728.968.193 1.798.919 2.286 1.61.516 3.275 1.009 4.654 1.472.509 1.793.997 3.592 1.48 5.388.16.36.506.494.864.498l-.002.018s.281.028.555-.038a2.1 2.1 0 0 0 .933-.517c.345-.324 1.28-1.244 1.811-1.764l3.999 2.952.032.018s.442.311 1.09.355c.324.022.75-.04 1.116-.308.37-.27.613-.702.728-1.196.342-1.492 2.61-12.285 2.997-14.072l-.01.042c.27-1.006.17-1.928-.455-2.474a1.654 1.654 0 0 0-1.034-.407z"></path></svg>
+                </a>
+                <a href="https://www.tiktok.com/@romaxa055" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                </a>
+            </span>
+            <span class="priv">Для статистики сайт зберігає технічні дані про візити: IP-адресу, браузер і сторінку.</span>
+        </div>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
